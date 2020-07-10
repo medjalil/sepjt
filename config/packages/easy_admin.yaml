@@ -148,7 +148,22 @@ easy_admin:
                     - { property: 'name', label: 'Nom' }
                     - { property: 'quantity', label: 'Quantité' }
                     - { property: 'task', label: 'Tâche' }
-
+        Contact:
+            class: App\Entity\Contact
+            list:
+                title: 'Liste des message'
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'email', label: 'Adresse de messagerie' }
+                    - { property: 'object', label: 'Objet' }
+            show :
+                title : 'Afficher message'
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'email', label: 'Adresse de messagerie' }
+                    - { property: 'object', label: 'Objet' }
+                    - { property: 'message', label: 'Message' }
+            disabled_actions: ['new','delete','edit']
         User:
             class: App\Entity\User
             label: 'Utilisateur'
@@ -187,6 +202,7 @@ easy_admin:
             - { entity: 'Task', label: 'Tâche', icon: 'tasks' }
             - { entity: 'Worker', label: 'Ouvrier', icon: 'hard-hat' }
             - { entity: 'Equipment', label: 'Matériel', icon: 'hammer' }
+            - { entity: 'Contact', label: 'Contact', icon: 'envelope' }
             - { label: 'Administration' , permission: 'ROLE_ADMIN'}
             - { entity: 'User', permission: 'ROLE_ADMIN', icon: 'user' }
 

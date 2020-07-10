@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Contact;
 use App\Entity\Equipment;
 use App\Entity\Project;
 use App\Entity\Task;
@@ -69,7 +70,15 @@ class AppFixtures extends Fixture {
             }
             $manager->persist($project);
         }
-
+        // Ajouter 50 contact
+        for ($t = 0; $t < 50; $t++) {
+            $contact = new Contact();
+            $contact->setName($faker->name);
+            $contact->setEmail($faker->email);
+            $contact->setObject($faker->realText($maxNbChars = 100));
+            $contact->setMessage($faker->realText($maxNbChars = 500));
+            $manager->persist($contact);
+        }
         // Mise à jour dans le base de données
         $manager->flush();
     }

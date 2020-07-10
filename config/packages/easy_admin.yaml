@@ -1,0 +1,159 @@
+easy_admin:
+#titre de l'application
+    site_name: 'SEPJT'
+
+    list:
+        actions:
+            - { name: 'new', icon: 'plus', label: 'Ajouter'}
+            - { name: 'show', icon: 'search', label: 'Afficher'}
+            - { name: 'edit', icon: 'pencil', label: 'Modifier' }
+            - { name: 'delete', icon: 'trash', label: 'Supprimer'}
+        max_results: 30
+        batch_actions: ['delete']
+
+    entities:
+        Project:
+            class: App\Entity\Project
+            list:
+                title : 'Liste des projets'
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'startDate', label: 'Date de début' }
+                    - { property: 'endDate', label: 'Date de fin' }
+                max_results: 30
+
+            show :
+                title : 'Afficher projet'
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'startDate', label: 'Date de début' }
+                    - { property: 'endDate', label: 'Date de fin' }
+                    - { property: 'Description', label: 'Description' }
+                    - { property: 'location', label: 'Lieu' }
+                max_results: 30
+            edit :
+                title : 'Modifier projet'
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'startDate', label: 'Date de début' }
+                    - { property: 'endDate', label: 'Date de fin' }
+                    - { property: 'Description', label: 'Description' }
+                    - { property: 'location', label: 'Lieu' }
+                item_permission: 'ROLE_ADMIN'
+            new :
+                title : 'Ajouter un nouveau projet'
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'startDate', label: 'Date de début' }
+                    - { property: 'endDate', label: 'Date de fin' }
+                    - { property: 'Description', label: 'Description' }
+                    - { property: 'location', label: 'Lieu' }
+                item_permission: 'ROLE_ADMIN'
+            delete:
+                item_permission: 'ROLE_ADMIN'
+        Task:
+            class: App\Entity\Task
+            list:
+                title: 'Liste des tâches'
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'startDate', label: 'Date de début' }
+                    - { property: 'endDate', label: 'Date de fin' }
+                    - { property: 'project', label: 'Projet' }
+                max_results: 30
+
+            show :
+                title : 'Afficher tâche'
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'startDate', label: 'Date de début' }
+                    - { property: 'endDate', label: 'Date de fin' }
+                    - { property: 'project', label: 'Projet' }
+                max_results: 30
+            edit :
+                title : 'Modifier tâche'
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'startDate', label: 'Date de début' }
+                    - { property: 'endDate', label: 'Date de fin' }
+                    - { property: 'project', label: 'Projet' }
+                item_permission: 'ROLE_ADMIN'
+            new :
+                title : 'Ajouter un nouveau projet'
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'startDate', label: 'Date de début' }
+                    - { property: 'endDate', label: 'Date de fin' }
+                    - { property: 'project', label: 'Projet' }
+                item_permission: 'ROLE_ADMIN'
+            delete:
+                item_permission: 'ROLE_ADMIN'
+        Worker:
+            class: App\Entity\Worker
+            list:
+                title: 'Liste des ouvriers'
+                fields:
+                    - { property: 'fullName', label: 'Nom et Prénom' }
+                    - { property: 'specialty', label: 'Spécialité' }
+                max_results: 30
+            new :
+                title : 'Ajouter un nouveau ouvrier'
+                fields:
+                    - { property: 'fullName', label: 'Nom et Prénom' }
+                    - { property: 'specialty', label: 'Spécialité' }
+            edit :
+                title : 'Modifier ouvrier'
+                fields:
+                    - { property: 'fullName', label: 'Nom et Prénom' }
+                    - { property: 'specialty', label: 'Spécialité' }
+            show :
+                title : 'Afficher ouvrier'
+                fields:
+                    - { property: 'fullName', label: 'Nom et Prénom' }
+                    - { property: 'specialty', label: 'Spécialité' }
+        Equipment:
+            class: App\Entity\Equipment
+            list:
+                title: 'Liste des matériels'
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'quantity', label: 'Quantité' }
+                max_results: 30
+            new :
+                title : 'Ajouter un nouveau matériel'
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'quantity', label: 'Quantité' }
+            edit :
+                title : 'Modifier ouvrier'
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'quantity', label: 'Quantité' }
+            show :
+                title : 'Afficher ouvrier'
+                fields:
+                    - { property: 'name', label: 'Nom' }
+                    - { property: 'quantity', label: 'Quantité' }
+
+        User:
+            class: App\Entity\User
+            label: 'Utilisateur'
+            list:
+                title: 'Liste des utilisaterus'
+                fields: [{ property: 'email', label: 'Adresse de messagerie' },{ property: 'roles', label: 'Role' } ]
+            form:
+                fields:
+                    - { property: 'email', type: 'email'}
+                    - { property: 'password', type: 'password'}
+                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+    design:
+        # menu principale
+        menu:
+            - { label: 'Application'}
+            - { entity: 'Project', label: 'Projet', icon: 'project-diagram'  }
+            - { entity: 'Task', label: 'Tâche', icon: 'tasks' }
+            - { entity: 'Worker', label: 'Ouvrier', icon: 'hard-hat' }
+            - { entity: 'Equipment', label: 'Matériel', icon: 'hammer' }
+            - { label: 'Administration' , permission: 'ROLE_ADMIN'}
+            - { entity: 'User', permission: 'ROLE_ADMIN', icon: 'user' }
+

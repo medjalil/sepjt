@@ -1,5 +1,8 @@
 easy_admin:
 #titre de l'application
+    formats:
+        date: 'd/m/Y'
+        datetime: 'd/m/Y h:i'
     site_name: 'SEPJT'
 
     list:
@@ -8,7 +11,7 @@ easy_admin:
             - { name: 'show', icon: 'search', label: 'Afficher'}
             - { name: 'edit', icon: 'pencil', label: 'Modifier' }
             - { name: 'delete', icon: 'trash', label: 'Supprimer'}
-        max_results: 30
+
         batch_actions: ['delete']
 
     entities:
@@ -18,25 +21,26 @@ easy_admin:
                 title : 'Liste des projets'
                 fields:
                     - { property: 'name', label: 'Nom' }
-                    - { property: 'startDate', label: 'Date de début' }
-                    - { property: 'endDate', label: 'Date de fin' }
-                max_results: 30
+                    - { property: 'startDate', label: 'Date de début' , type_options: { widget: 'single_text' }}
+                    - { property: 'endDate', label: 'Date de fin' , type_options: { widget: 'single_text' }}
+
 
             show :
                 title : 'Afficher projet'
                 fields:
                     - { property: 'name', label: 'Nom' }
-                    - { property: 'startDate', label: 'Date de début' }
-                    - { property: 'endDate', label: 'Date de fin' }
+                    - { property: 'startDate', label: 'Date de début' , type_options: { widget: 'single_text' }}
+                    - { property: 'endDate', label: 'Date de fin' , type_options: { widget: 'single_text' }}
                     - { property: 'Description', label: 'Description' }
                     - { property: 'location', label: 'Lieu' }
-                max_results: 30
+                    - { property: 'tasks', label: 'Tâches' }
+
             edit :
                 title : 'Modifier projet'
                 fields:
                     - { property: 'name', label: 'Nom' }
-                    - { property: 'startDate', label: 'Date de début' }
-                    - { property: 'endDate', label: 'Date de fin' }
+                    - { property: 'startDate', label: 'Date de début' , type_options: { widget: 'single_text' }}
+                    - { property: 'endDate', label: 'Date de fin' , type_options: { widget: 'single_text' }}
                     - { property: 'Description', label: 'Description' }
                     - { property: 'location', label: 'Lieu' }
                 item_permission: 'ROLE_ADMIN'
@@ -44,8 +48,8 @@ easy_admin:
                 title : 'Ajouter un nouveau projet'
                 fields:
                     - { property: 'name', label: 'Nom' }
-                    - { property: 'startDate', label: 'Date de début' }
-                    - { property: 'endDate', label: 'Date de fin' }
+                    - { property: 'startDate', label: 'Date de début' , type_options: { widget: 'single_text' }}
+                    - { property: 'endDate', label: 'Date de fin' , type_options: { widget: 'single_text' }}
                     - { property: 'Description', label: 'Description' }
                     - { property: 'location', label: 'Lieu' }
                 item_permission: 'ROLE_ADMIN'
@@ -57,33 +61,35 @@ easy_admin:
                 title: 'Liste des tâches'
                 fields:
                     - { property: 'name', label: 'Nom' }
-                    - { property: 'startDate', label: 'Date de début' }
-                    - { property: 'endDate', label: 'Date de fin' }
+                    - { property: 'startDate', label: 'Date de début' , type_options: { widget: 'single_text' }}
+                    - { property: 'endDate', label: 'Date de fin' , type_options: { widget: 'single_text' }}
                     - { property: 'project', label: 'Projet' }
-                max_results: 30
+
 
             show :
                 title : 'Afficher tâche'
                 fields:
                     - { property: 'name', label: 'Nom' }
-                    - { property: 'startDate', label: 'Date de début' }
-                    - { property: 'endDate', label: 'Date de fin' }
+                    - { property: 'startDate', label: 'Date de début' , type_options: { widget: 'single_text' }}
+                    - { property: 'endDate', label: 'Date de fin' , type_options: { widget: 'single_text' }}
                     - { property: 'project', label: 'Projet' }
-                max_results: 30
+                    - { property: 'workers', label: 'Ouvriers' }
+                    - { property: 'equipment', label: 'Matériels' }
+
             edit :
                 title : 'Modifier tâche'
                 fields:
                     - { property: 'name', label: 'Nom' }
-                    - { property: 'startDate', label: 'Date de début' }
-                    - { property: 'endDate', label: 'Date de fin' }
+                    - { property: 'startDate', label: 'Date de début' , type_options: { widget: 'single_text' }}
+                    - { property: 'endDate', label: 'Date de fin' , type_options: { widget: 'single_text' }}
                     - { property: 'project', label: 'Projet' }
                 item_permission: 'ROLE_ADMIN'
             new :
-                title : 'Ajouter un nouveau projet'
+                title : 'Ajouter tâche'
                 fields:
                     - { property: 'name', label: 'Nom' }
-                    - { property: 'startDate', label: 'Date de début' }
-                    - { property: 'endDate', label: 'Date de fin' }
+                    - { property: 'startDate', label: 'Date de début', type_options: { widget: 'single_text' }}
+                    - { property: 'endDate', label: 'Date de fin' , type_options: { widget: 'single_text' }}
                     - { property: 'project', label: 'Projet' }
                 item_permission: 'ROLE_ADMIN'
             delete:
@@ -95,22 +101,26 @@ easy_admin:
                 fields:
                     - { property: 'fullName', label: 'Nom et Prénom' }
                     - { property: 'specialty', label: 'Spécialité' }
-                max_results: 30
+                    - { property: 'task', label: 'Tâche' }
+
             new :
                 title : 'Ajouter un nouveau ouvrier'
                 fields:
                     - { property: 'fullName', label: 'Nom et Prénom' }
                     - { property: 'specialty', label: 'Spécialité' }
+                    - { property: 'task', label: 'Tâche' }
             edit :
                 title : 'Modifier ouvrier'
                 fields:
                     - { property: 'fullName', label: 'Nom et Prénom' }
                     - { property: 'specialty', label: 'Spécialité' }
+                    - { property: 'task', label: 'Tâche' }
             show :
                 title : 'Afficher ouvrier'
                 fields:
                     - { property: 'fullName', label: 'Nom et Prénom' }
                     - { property: 'specialty', label: 'Spécialité' }
+                    - { property: 'task', label: 'Tâche' }
         Equipment:
             class: App\Entity\Equipment
             list:
@@ -118,29 +128,52 @@ easy_admin:
                 fields:
                     - { property: 'name', label: 'Nom' }
                     - { property: 'quantity', label: 'Quantité' }
-                max_results: 30
+                    - { property: 'task', label: 'Tâche' }
+
             new :
                 title : 'Ajouter un nouveau matériel'
                 fields:
                     - { property: 'name', label: 'Nom' }
                     - { property: 'quantity', label: 'Quantité' }
+                    - { property: 'task', label: 'Tâche' }
             edit :
                 title : 'Modifier ouvrier'
                 fields:
                     - { property: 'name', label: 'Nom' }
                     - { property: 'quantity', label: 'Quantité' }
+                    - { property: 'task', label: 'Tâche' }
             show :
                 title : 'Afficher ouvrier'
                 fields:
                     - { property: 'name', label: 'Nom' }
                     - { property: 'quantity', label: 'Quantité' }
+                    - { property: 'task', label: 'Tâche' }
 
         User:
             class: App\Entity\User
             label: 'Utilisateur'
             list:
                 title: 'Liste des utilisaterus'
-                fields: [{ property: 'email', label: 'Adresse de messagerie' },{ property: 'roles', label: 'Role' } ]
+                fields:
+                    - { property: 'email', label: 'Adresse de messagerie' }
+                    - { property: 'roles', label: 'Roles' }
+            new :
+                title : 'Ajouter un nouveau utilisateur'
+                fields:
+                    - { property: 'email', label: 'Adresse de messagerie' }
+                    - { property: 'roles', label: 'Roles' }
+                    - { property: 'password', label: 'Mot de passe' }
+            edit :
+                title : 'Modifier utilisateur'
+                fields:
+                    - { property: 'email', label: 'Adresse de messagerie' }
+                    - { property: 'roles', label: 'Roles' }
+                    - { property: 'password', label: 'Mot de passe' }
+            show :
+                title : 'Afficher utilisateur'
+                fields:
+                    - { property: 'email', label: 'Adresse de messagerie' }
+                    - { property: 'roles', label: 'Roles' }
             form:
                 fields:
                     - { property: 'email', type: 'email'}

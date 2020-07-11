@@ -23,7 +23,9 @@ easy_admin:
                     - { property: 'name', label: 'Nom' }
                     - { property: 'startDate', label: 'Date de début' , type_options: { widget: 'single_text' }}
                     - { property: 'endDate', label: 'Date de fin' , type_options: { widget: 'single_text' }}
-
+            templates:
+                list: 'admin/project/list.html.twig'
+                show: 'admin/project/show.html.twig'
 
             show :
                 title : 'Afficher projet'
@@ -64,7 +66,9 @@ easy_admin:
                     - { property: 'startDate', label: 'Date de début' , type_options: { widget: 'single_text' }}
                     - { property: 'endDate', label: 'Date de fin' , type_options: { widget: 'single_text' }}
                     - { property: 'project', label: 'Projet' }
-
+            templates:
+                list: 'admin/project/list.html.twig'
+                show: 'admin/project/show.html.twig'
 
             show :
                 title : 'Afficher tâche'
